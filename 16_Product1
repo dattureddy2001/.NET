@@ -1,0 +1,73 @@
+class Product{
+	private int pid;
+	private string pname;
+	private double price;
+
+	public void read(){
+		System.Console.Write("Enter the Id of this Product: ");
+		pid=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the name of this Product: ");
+		pname=System.Console.ReadLine();
+		System.Console.Write("Enter the price of this Product: ");
+		price=double.Parse(System.Console.ReadLine());
+	}
+	public void print(){
+		System.Console.WriteLine(" Id: {0}, Name: {1}, Price: {2} ",pid,pname,price);
+	}
+}
+
+class List{
+	private Product []product;
+	private int i;
+	private int j;
+	public int Length;
+
+	public void init(int num){
+		product = new Product[num];
+		j=-1;
+		Length=num;
+	}
+
+	public void init(){
+		product = new Product[10];
+		j=-1;
+		Length=10;
+	}
+
+
+	public void Add(Product p){
+		product[i] = p;
+		i++;
+	}
+
+	public Product get(){
+		j++;
+		return product[j];
+	}
+
+
+}
+
+
+class Program{
+	public static void Main(){
+		List l = new List();
+		l.init(3);
+		Product p1 = new Product();
+		Product p2 = new Product();
+		Product p3 = new Product();
+
+		p1.read();
+		p2.read();
+		p3.read();
+
+		l.Add(p1);
+		l.Add(p2);
+		l.Add(p3);
+
+		for(int i=0;i<3;i++){
+			Product t = l.get();
+			t.print();
+		}
+	}
+}

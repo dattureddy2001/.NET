@@ -1,0 +1,27 @@
+class Math2024{
+	public int Sum(int x, int y){
+		return(x+y);
+	}
+	protected int Subt(int x, int y){
+		return(x-y);
+	}
+}
+class Math2025 : Math2024{
+	public int Mult(int x, int y){
+		return(x*y);
+	}
+	public int Subtract(int x, int y){
+		return(Subt(x,y));
+	}
+}
+class Program{
+	public static void Main(){
+		Math2024 m1= new Math2024();
+		Math2025 m2= new Math2025();
+		System.Console.WriteLine(m1.Sum(10,20));
+		//System.Console.WriteLine(m1.Subt(20,10));This will raise an error.
+		System.Console.WriteLine(m2.Sum(10,20));
+		System.Console.WriteLine(m2.Subtract(20,10));
+		System.Console.WriteLine(m2.Mult(10,20));
+	}
+}

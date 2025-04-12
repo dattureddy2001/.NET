@@ -1,0 +1,21 @@
+//Ikkada manam ne ichi parent class lo unna print method ni hide chesthamu.ila chesthey anaki warnings raavu. 
+class Parent{
+	public void print(){
+		System.Console.WriteLine("This is from Parent print.");
+	}
+}
+class Child:Parent{
+	public new void print(){
+		System.Console.WriteLine("This is from Child print.");
+		//print(); ila isthey, recursion aipothadi. parent print kavali antey, kinda ichinattu ivvali.
+		base.print();
+	}
+}
+class Program{
+	public static void Main(){
+		Parent p=new Parent();
+		Child c=new Child();
+		p.print();
+		c.print();
+	}
+}

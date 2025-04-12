@@ -1,0 +1,16 @@
+class Parent{
+	public Parent(){
+		System.Console.WriteLine("This is from Parent");
+	}
+}
+class Child : Parent{
+	public Child(){
+		System.Console.WriteLine("This is from Child");
+	}
+}
+class Program{
+	public static void Main(){
+		Parent p=new Parent();
+		Child c=new Child();
+	}
+}

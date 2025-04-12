@@ -1,0 +1,94 @@
+class Student{
+	private int sno;
+	private string sname;
+	private double fee;
+	public virtual void read(){
+		System.Console.Write("Enter the Id number of the Student: ");
+		sno=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the Name of the Student: ");
+		sname=System.Console.ReadLine();
+		System.Console.Write("Enter the Fee of the Student: ");
+		fee=double.Parse(System.Console.ReadLine());
+	}
+	public virtual void  print(){
+		System.Console.WriteLine(" Student Id: {0}, Student Name: {1}, Fee: {2} ",sno,sname,fee);
+	}
+}
+class Product:Student{
+	private int pid;
+	private string pname;
+	private double price;
+
+	public override void read(){
+		System.Console.Write("Enter the Id of this Product: ");
+		pid=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the name of this Product: ");
+		pname=System.Console.ReadLine();
+		System.Console.Write("Enter the price of this Product: ");
+		price=double.Parse(System.Console.ReadLine());
+	}
+	public override void print(){
+		System.Console.WriteLine(" Id: {0}, Name: {1}, Price: {2} ",pid,pname,price);
+	}
+}
+class List{
+	//private Product []product;
+	private Student []student;
+	//private int []list;
+	private int i=0;
+	private int j=0;
+	public int Length;
+	public List(){
+		//product = new Product[2];
+		student = new Student[2];
+		//list = new int[2];
+		j=-1;
+		//j1=-1;
+		//j2=-1;
+		Length=2;
+	}
+	/*public void Add(Product p){
+		product[i1]=p;
+		i1++;
+		list[i]=1;
+		i++;
+	}*/
+	public void Add(Student s){
+		student[i]=s;
+		i++;
+	}
+	public Student get(){
+		j++;
+		return(student[j]);
+	}
+	/*public Student get2(){
+		j2++;
+		return(student[j2]);
+	}
+	public List get(){
+		if(list[j]==1){
+			j++;
+			return get1();
+		}
+		else if(list[j]==2){
+			j++;
+			return get2();
+		}
+	}*/
+
+}
+class Program{
+	public static void Main(){
+		List lst;
+		Product p=new Product();
+		Student s=new Student();
+		p.read();
+		s.read();
+		lst=new List();
+		lst.Add(p);
+		lst.Add(s);
+		for(int i=0;i<2;i++){
+			lst.get().print();
+		}
+	}
+}

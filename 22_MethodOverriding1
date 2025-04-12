@@ -1,0 +1,28 @@
+//ikkada manam overrriding cheyyaledu.Idi just overriding ki kavalsina scenario ni create chesamu anthey.
+//ikkada parent object tho unna child instance tho print ni call chesinappudu, parent print vasthundi. Child print ni  //theppinchadam kosam manam overriding vaadathamu. 
+class Parent{
+	public void print(){
+		System.Console.WriteLine("This is from Parent print.");
+	}
+
+}
+class Child:Parent{
+	public void print(){
+		System.Console.WriteLine("This is from Child print.");
+	}
+	//public override void hi(){
+	//	System.Console.WriteLine("Hi");
+	//}
+	//idi run avvadu. override ivvakapoina kuda run avvadu.
+	//deenni run cheyyadaniki 22_MethodOverriding3 lo code vundi.
+}
+class Program{
+	public static void Main(){
+		Parent p;
+		p=new Parent();
+		p.print();
+		p=new Child();
+		p.print();
+		p.hi();
+	}
+}

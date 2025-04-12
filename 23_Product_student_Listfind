@@ -1,0 +1,98 @@
+//Question:- Write a find function, that checks the list with a number, if it mtches with the student ID, it gives student, if it matches with the //product ID, it gives product, else it gives the Null.
+class Mybase{
+	public virtual void read(){
+		System.Console.WriteLine("Hellooooo.........");
+	}
+	public virtual void print(){
+		System.Console.WriteLine("BYEEEEEEEEE...............");
+	}
+	public virtual int getid(){
+		System.Console.WriteLine("Hellooooo.........Again................");
+		return 1;
+	}
+}
+class Student:Mybase{
+	private int sno;
+	private string sname;
+	private double fee;
+	public override void read(){
+		System.Console.Write("Enter the Id number of the Student: ");
+		sno=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the Name of the Student: ");
+		sname=System.Console.ReadLine();
+		System.Console.Write("Enter the Fee of the Student: ");
+		fee=double.Parse(System.Console.ReadLine());
+	}
+	public override void  print(){
+		System.Console.WriteLine(" Student Id: {0}, Student Name: {1}, Fee: {2} ",sno,sname,fee);
+	}
+	public override int getid(){
+		return sno;
+	}
+}
+class Product:Mybase{
+	private int pid;
+	private string pname;
+	private double price;
+
+	public override void read(){
+		System.Console.Write("Enter the Id of this Product: ");
+		pid=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the name of this Product: ");
+		pname=System.Console.ReadLine();
+		System.Console.Write("Enter the price of this Product: ");
+		price=double.Parse(System.Console.ReadLine());
+	}
+	public override void print(){
+		System.Console.WriteLine(" Id: {0}, Name: {1}, Price: {2} ",pid,pname,price);
+	}
+	public override int getid(){
+		return pid;
+	}
+}
+class List{
+	private Mybase []list;
+	private int i=0;
+	private int j=0;
+	public int Length;
+	public List(){
+		list = new Mybase[2];
+		j=-1;
+		Length=2;
+	}
+	public void Add(Mybase m){
+		list[i]=m;
+		i++;
+	}
+	public Mybase get(){
+		j++;
+		return(list[j]);
+	}
+	public Mybase find(int num){
+		for(int k=0;k<Length;k++){
+			if (list[k].getid()==num){
+				return (list[k]);
+			}
+		}
+		return null;
+	}
+}
+class Program{
+	public static void Main(){
+		List lst;
+		Product p=new Product();
+		Student s=new Student();
+		p.read();
+		s.read();
+		lst=new List();
+		lst.Add(p);
+		lst.Add(s);
+		Mybase m=lst.find(1002);
+		if(m==null){
+			System.Console.WriteLine("The given id is not present in the list.");
+		}
+		else{
+			m.print();
+		}
+	}
+}

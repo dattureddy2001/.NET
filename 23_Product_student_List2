@@ -1,0 +1,75 @@
+class Hyper{
+	public virtual void read(){
+		System.Console.WriteLine("Hellooooo.........");
+	}
+	public virtual void print(){
+		System.Console.WriteLine("BYEEEEEEEEE...............");
+	}
+}
+class Student:Hyper{
+	private int sno;
+	private string sname;
+	private double fee;
+	public override void read(){
+		System.Console.Write("Enter the Id number of the Student: ");
+		sno=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the Name of the Student: ");
+		sname=System.Console.ReadLine();
+		System.Console.Write("Enter the Fee of the Student: ");
+		fee=double.Parse(System.Console.ReadLine());
+	}
+	public override void  print(){
+		System.Console.WriteLine(" Student Id: {0}, Student Name: {1}, Fee: {2} ",sno,sname,fee);
+	}
+}
+class Product:Hyper{
+	private int pid;
+	private string pname;
+	private double price;
+
+	public override void read(){
+		System.Console.Write("Enter the Id of this Product: ");
+		pid=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the name of this Product: ");
+		pname=System.Console.ReadLine();
+		System.Console.Write("Enter the price of this Product: ");
+		price=double.Parse(System.Console.ReadLine());
+	}
+	public override void print(){
+		System.Console.WriteLine(" Id: {0}, Name: {1}, Price: {2} ",pid,pname,price);
+	}
+}
+class List{
+	private Hyper []list;
+	private int i=0;
+	private int j=0;
+	public int Length;
+	public List(){
+		list = new Hyper[2];
+		j=-1;
+		Length=2;
+	}
+	public void Add(Hyper h){
+		list[i]=h;
+		i++;
+	}
+	public Hyper get(){
+		j++;
+		return(list[j]);
+	}
+}
+class Program{
+	public static void Main(){
+		List lst;
+		Product p=new Product();
+		Student s=new Student();
+		p.read();
+		s.read();
+		lst=new List();
+		lst.Add(p);
+		lst.Add(s);
+		for(int i=0;i<2;i++){
+			lst.get().print();
+		}
+	}
+}

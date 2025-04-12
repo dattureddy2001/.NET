@@ -1,0 +1,20 @@
+//Overriding is implemented here with the help of virtual and override keywords.
+class Parent{
+	public virtual void print(){
+		System.Console.WriteLine("This is from Parent print.");
+	}
+}
+class Child:Parent{
+	public override void print(){
+		System.Console.WriteLine("This is from Child print.");
+	}
+}
+class Program{
+	public static void Main(){
+		Parent p;
+		p=new Parent();
+		p.print();
+		p=new Child();
+		p.print();
+	}
+}

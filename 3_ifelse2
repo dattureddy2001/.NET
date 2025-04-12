@@ -1,0 +1,25 @@
+class IFELSE{
+	public static void Main(){
+		int c,cpp,cs;
+		System.Console.WriteLine("Enter the marks for C: ");
+		c=int.Parse(System.Console.ReadLine());
+		System.Console.WriteLine("Enter the marks for C++: ");
+		cpp=int.Parse(System.Console.ReadLine());
+		System.Console.WriteLine("Enter the marks for C#:");
+		cs=int.Parse(System.Console.ReadLine());
+		if(((double)(c+cpp+cs/3))>=60){
+			System.Console.WriteLine("Total:{0}, Average: {1},  Grade: A ",c+cpp+cs, (double)c+cpp+cs/3);
+		}
+		else if(((double)(c+cpp+cs/3))>=50){
+			System.Console.WriteLine("Total:{0}, Average: {1},  Grade: B ",c+cpp+cs, (double)c+cpp+cs/3);
+		}
+		else if(((double)(c+cpp+cs/3))>=40){
+			System.Console.WriteLine("Total:{0}, Average: {1},  Grade: C ",c+cpp+cs, (double)c+cpp+cs/3);
+		}
+		else{
+			System.Console.WriteLine("Total:{0}, Average: {1},  Grade: F ",c+cpp+cs, (double)c+cpp+cs/3);
+		}
+
+
+	}
+}

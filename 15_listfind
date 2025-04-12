@@ -1,0 +1,63 @@
+class List{
+	private int []data;
+	int i;
+
+	public void initialize(){
+		data = new int[10];
+	}
+
+	public void initialize(int num){
+		data = new int[num];
+	}
+
+	public void add(int num){
+		data[i] = num;
+		i++;
+	}
+	public void print(){ //intha complicated avasaram ledu.Program number 12 lo deenni simplify chesanu. Idi just reference kosam.
+		for(int j=0;j<data.Length;j++){
+			if(data[j]==0){
+				int m = 0;
+				for(int k=j; k<data.Length;k++){
+					if(data[k]!=0){
+						m = 1;
+					}
+				}
+				if(m==0)
+				{
+					break;
+				}
+			}
+			System.Console.Write(" {0}  ", data[j]);
+		}
+	}
+	public int find(int num){
+		for(int j=0;j<data.Length;j++){
+			if(data[j]==num){
+				return(j);
+			}
+		}
+		return (-1);
+	}
+}
+
+class Program{
+	public static void Main(){
+		List l;
+		l = new List();
+		l.initialize();
+		l.add(100);
+		l.add(200);
+		l.add(0);
+		l.add(0);
+		l.add(300);
+		l.print();
+		int pos = l.find(200);
+		if(pos==-1){
+			System.Console.WriteLine("The Element is not found.");
+		}
+		else{
+			System.Console.WriteLine("The Element is found at index number {0}.",pos);
+		}
+	}
+}

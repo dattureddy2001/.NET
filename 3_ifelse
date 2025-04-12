@@ -1,0 +1,30 @@
+class IFELSE{
+	public static void Main(){
+		int c,cpp,cs,total;
+		double avg;
+		char grade;
+		System.Console.WriteLine("Enter the marks for C: ");
+		c=int.Parse(System.Console.ReadLine());
+		System.Console.WriteLine("Enter the marks for C++: ");
+		cpp=int.Parse(System.Console.ReadLine());
+		System.Console.WriteLine("Enter the marks for C#:");
+		cs=int.Parse(System.Console.ReadLine());
+		total=c+cpp+cs;
+		avg=(double)total/3;
+		if(avg>=60){
+			grade='A';
+		}
+		else if(avg>=50){
+			grade='B';
+		}
+		else if(avg>=40){
+			grade='C';
+		}
+		else{
+			grade='F';
+		}
+		System.Console.WriteLine("Total:{0}, Average: {1},  Grade: {2} ",total, avg, grade);
+
+
+	}
+}

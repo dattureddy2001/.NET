@@ -1,0 +1,32 @@
+class List{
+	private int []data;
+	int i;
+
+	public void initialize(){
+		data = new int[10];
+	}
+
+	public void add(int num){
+		data[i] = num;
+		i++;
+	}
+	public void print(){
+		for(int j=0;j<i;j++){
+			System.Console.Write(" {0}  ", data[j]);
+		}
+	}
+}
+
+class Program{
+	public static void Main(){
+		List l;
+		l = new List();
+		l.initialize();
+		l.add(100);
+		l.add(200);
+		l.add(0);
+		l.add(0);
+		l.add(300);
+		l.print();
+	}
+}

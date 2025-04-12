@@ -1,0 +1,48 @@
+
+class Student{
+	private int sno;
+	private string sname;
+	private double fee;
+	public void read(){
+		System.Console.Write("Enter the Id number of the Student: ");
+		sno=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the Name of the Student: ");
+		sname=System.Console.ReadLine();
+		System.Console.Write("Enter the Fee of the Student: ");
+		fee=double.Parse(System.Console.ReadLine());
+	}
+	public void print(){
+		System.Console.WriteLine(" Student Id: {0}, Student Name {1}, Fee: {2} ",sno,sname,fee);
+	}
+	public Student Finder(int no, Student []stu){
+		for(int i = 0; i< stu.Length; i++){
+			if(stu[i].sno==no){
+				return(stu[i]);
+			}
+		}
+		return null;
+	}
+}
+
+class Program{
+	public static void Main(){
+		Student []s;
+		System.Console.Write("Enter the number of objects to be created: ");
+		int num=int.Parse(System.Console.ReadLine());
+		s = new Student[num];
+		for(int i=0;i<s.Length;i++){
+			s[i] = new Student();
+			s[i].read();	
+		}
+		System.Console.Write("Enter the value to be found");
+		int find = int.Parse(System.Console.ReadLine());
+		Student found = s[0].Finder(find,s);
+		if(found==null){
+			System.Console.Write("Value Not Found.");
+		}
+		else{
+			System.Console.Write("Value  Found.");
+			found.print();
+		}
+	}
+}

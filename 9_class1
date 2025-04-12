@@ -1,0 +1,25 @@
+class Student{
+	private int sno;
+	private string sname;
+	private double fee;
+	public void read(){
+		System.Console.Write("Enter the Id number of the Student: ");
+		sno=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the Name of the Student: ");
+		sname=System.Console.ReadLine();
+		System.Console.Write("Enter the Fee of the Student: ");
+		fee=double.Parse(System.Console.ReadLine());
+	}
+	public void print(){
+		System.Console.WriteLine(" Student Id: {0}, Student Name {1}, Fee: {2} ",sno,sname,fee);
+	}
+}
+class Program{
+	public static void Main(){
+		Student s1,s2;
+		s1 = new Student();
+		s2=s1;
+		s1.read();
+		s2.print();
+	}
+}

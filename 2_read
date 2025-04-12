@@ -1,0 +1,10 @@
+class Read{
+	public static void Main(){
+		int a,b;
+		System.Console.WriteLine("Enter the first Number");
+		a=int.Parse(System.Console.ReadLine());
+		System.Console.WriteLine("Enter the Second Number");
+		b=int.Parse(System.Console.ReadLine());
+		System.Console.WriteLine("{0}+{1}={2}",a,b,a+b);
+	}
+}

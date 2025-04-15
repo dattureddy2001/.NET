@@ -1,0 +1,81 @@
+class Student{
+	private int sno;
+	private string sname;
+	private double fee;
+	public void read(){
+		System.Console.Write("Enter the Id number of the Student: ");
+		sno=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the Name of the Student: ");
+		sname=System.Console.ReadLine();
+		System.Console.Write("Enter the Fee of the Student: ");
+		fee=double.Parse(System.Console.ReadLine());
+	}
+	public void  print(){
+		System.Console.WriteLine("Student Id: {0}, Student Name: {1}, Fee: {2} ",sno,sname,fee);
+	}
+	public int getid(){
+		return sno;
+	}
+	public override string ToString(){
+		return("ID: "+sno.ToString()+" Name:"+sname.ToString()+" Prize:"+fee.ToString());
+	}
+}
+class Product{
+	private int pid;
+	private string pname;
+	private double price;
+
+	public void read(){
+		System.Console.Write("Enter the Id of this Product: ");
+		pid=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the name of this Product: ");
+		pname=System.Console.ReadLine();
+		System.Console.Write("Enter the price of this Product: ");
+		price=double.Parse(System.Console.ReadLine());
+	}
+	public void print(){
+		System.Console.WriteLine("Id: {0}, Name: {1}, Price: {2} ",pid,pname,price);
+	}
+	public int getid(){
+		return pid;
+	}
+	public override string ToString(){
+		return("ID: "+pid.ToString()+" Name:"+pname.ToString()+" Prize:"+price.ToString());
+	}
+}
+class List{
+	private object []list;
+	private int i=0;
+	private int j=0;
+	public int Length;
+	public List(){
+		list = new object[5];
+		Length=5;
+	}
+	public void Add(object m){
+		list[i]=m;
+		i++;
+	}
+	public object get(){
+		return(list[j++]);
+	}
+}
+class Program{
+	public static void Main(){
+		List lst;
+		Product p=new Product();
+		Student s=new Student();
+		p.read();
+		s.read();
+		lst=new List();
+		lst.Add(p);
+		lst.Add(s);
+		lst.Add(100);
+		lst.Add("Ravi");
+		lst.Add(50.26);
+		for(int i=0;i<5;i++){
+			object current=lst.get();
+			System.Console.WriteLine(current);
+		}
+	}
+}

@@ -1,0 +1,113 @@
+class Student{
+	private int sno;
+	private string sname;
+	private double fee;
+	public void read(){
+		System.Console.Write("Enter the Id number of the Student: ");
+		sno=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the Name of the Student: ");
+		sname=System.Console.ReadLine();
+		System.Console.Write("Enter the Fee of the Student: ");
+		fee=double.Parse(System.Console.ReadLine());
+	}
+	public int getid(){
+		return sno;
+	}
+	public override string ToString(){
+		return("ID: "+sno.ToString()+" Name:"+sname.ToString()+" Fee:"+fee.ToString());
+	}
+	public override bool Equals(object b){
+		if(sno==(int)b){
+			return(true);
+		}
+		else{
+			return(false);
+		}
+	}
+	public override int GetHashCode(){
+		return 1;
+	}
+}
+class Product{
+	private int pid;
+	private string pname;
+	private double price;
+
+	public void read(){
+		System.Console.Write("Enter the Id of this Product: ");
+		pid=int.Parse(System.Console.ReadLine());
+		System.Console.Write("Enter the name of this Product: ");
+		pname=System.Console.ReadLine();
+		System.Console.Write("Enter the price of this Product: ");
+		price=double.Parse(System.Console.ReadLine());
+	}
+	public int getid(){
+		return pid;
+	}
+	public override string ToString(){
+		return("ID: "+pid.ToString()+" Name:"+pname.ToString()+" Prize:"+price.ToString());
+	}
+	public override bool Equals(object b){
+		if(pid==(int)b){
+			return(true);
+		}
+		else{
+			return(false);
+		}
+	}
+	public override int GetHashCode(){
+		return 1;
+	}
+}
+class List{
+	private object []list;
+	private int i=0;
+	private int j=0;
+	public int Length;
+	public List(){
+		list = new object[5];
+		Length=5;
+	}
+	public void Add(object m){
+		list[i]=m;
+		i++;
+	}
+	public object get(){
+		return(list[j++]);
+	}
+	public object find(int num){
+		for(int k=0;k<i;k++){
+			if(list[k].Equals(num)){
+				return(list[k]);
+			}
+		}
+		return null;
+	}
+}
+class Program{
+	public static void Main(){
+		List lst;
+		Product p=new Product();
+		Student s=new Student();
+		p.read();
+		s.read();
+		lst=new List();
+		lst.Add(p);
+		lst.Add(s);
+		lst.Add(100);
+		lst.Add("Ravi");
+		lst.Add(50.26);
+		for(int i=0;i<5;i++){
+			object current=lst.get();
+			System.Console.WriteLine(current);
+		}
+		object a=lst.find(1002);
+		if(a == null){
+			System.Console.WriteLine("The element is not found in the list.");
+		}
+		else{
+			System.Console.WriteLine("The item is found");
+			System.Console.WriteLine(a);
+		}
+	}
+}

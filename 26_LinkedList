@@ -1,0 +1,44 @@
+class LinkedList{
+	public object data;
+	public LinkedList next;
+}
+class LLMethods{
+	LinkedList first,prev;
+	public LLMethods(){
+		first=null;
+		prev=null;
+	}
+	public LinkedList Add(object dt){
+		LinkedList nw=new LinkedList();
+		nw.data =dt;
+		nw.next=null;
+		if(first==null){
+			first=nw;
+			prev=nw;
+		}
+		else{
+			prev.next=nw;
+			prev=nw;
+		}
+		return first;
+	}
+	public void display(LinkedList list){
+		LinkedList temp = list;
+		while(temp!=null){
+			System.Console.Write("{0}  ",temp.data);
+			temp=temp.next;
+		}
+
+	}
+}
+class Program{
+	public static void Main(){
+		LinkedList first=null;
+		LLMethods ll = new LLMethods();
+		first = ll.Add(100);
+		first = ll.Add(200);
+		first = ll.Add(300);
+		LinkedList temp = first;
+		ll.display(temp);
+	}
+}

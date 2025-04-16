@@ -1,0 +1,56 @@
+abstract class Iterator{
+	public abstract bool hasNext();
+	public abstract object next();
+}
+class LinkedList{
+	public object data;
+	public LinkedList next;
+}
+class LLMethods : Iterator{
+	LinkedList first,prev,temp;
+	public LLMethods(){
+		first=null;
+		prev=null;
+	}
+	public LinkedList Add(object dt){
+		LinkedList nw=new LinkedList();
+		nw.data =dt;
+		nw.next=null;
+		if(first==null){
+			first=nw;
+			prev=nw;
+			temp=nw;
+		}
+		else{
+			prev.next=nw;
+			prev=nw;
+		}
+		return first;
+	}
+	public override bool hasNext(){
+		if(temp!=null){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	public override object next(){
+		object t2=temp.data;
+		temp=temp.next;
+		return(t2);
+	}
+}
+class Program{
+	public static void Main(){
+		LinkedList first=null;
+		LLMethods ll = new LLMethods();
+		first = ll.Add(100);
+		first = ll.Add(200);
+		first = ll.Add(300);
+		LinkedList temp = first;
+		while(ll.hasNext()){
+			System.Console.WriteLine("{0}  ",ll.next());
+		}
+	}
+}

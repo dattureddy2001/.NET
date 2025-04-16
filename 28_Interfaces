@@ -1,0 +1,46 @@
+interface Myinterface1{
+	int Sum(int x, int y);
+}
+interface Myinterface2:Myinterface1{
+	int Subt(int x,int y);
+}
+interface Myinterface3{
+	int Mult(int x, int y);
+}
+class Math:Myinterface2, Myinterface3{
+	public int Sum(int x, int y){
+		return(x+y);
+	}
+	public int Subt(int x, int y){
+		if(x>y){
+			return(x-y);
+		}
+		return(y-x);
+	}
+	public int Mult(int x, int y){
+		return(x*y);
+	}
+	public int Div(int x, int y){
+		return(x/y);
+	}
+}
+class Program{
+	public static void Main(){
+		Myinterface1  m1;
+		Myinterface2  m2;
+		Myinterface3  m3;
+		Math m = new Math();
+		System.Console.WriteLine(m.Sum(100,200));
+		System.Console.WriteLine(m.Subt(100,200));
+		System.Console.WriteLine(m.Mult(20,30));
+		System.Console.WriteLine(m.Div(50,2));
+		m1=m;
+		System.Console.WriteLine(m1.Sum(100,200));
+		m2=m;
+		System.Console.WriteLine(m2.Sum(100,200));
+		System.Console.WriteLine(m2.Subt(100,200));
+		m3=m;
+		System.Console.WriteLine(m3.Mult(20,30));
+		System.Console.WriteLine(((Math)m3).Div(50,2));
+	}
+}

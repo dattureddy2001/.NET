@@ -1,0 +1,126 @@
+abstract class Iterator{
+	public abstract bool hasNext();
+	public abstract object next();
+	public abstract object Add(object dt);
+}
+class LinkedList{
+	public object data;
+	public LinkedList next;
+}
+class LLMethods : Iterator{
+	object first;
+	LinkedList prev,temp;
+	public LLMethods(){
+		first=null;
+		prev=null;
+	}
+	public override object Add(object dt){
+		LinkedList nw=new LinkedList();
+		nw.data =dt;
+		nw.next=null;
+		if(first==null){
+			first=nw;
+			prev=nw;
+			temp=nw;
+		}
+		else{
+			prev.next=nw;
+			prev=nw;
+		}
+		return first;
+	}
+	public override bool hasNext(){
+		if(temp!=null){
+			return true;
+		}
+		else{
+			temp=(LinkedList)first;
+			return false;
+		}
+	}
+	public override object next(){
+		object t2=temp.data;
+		temp=temp.next;
+		return(t2);
+	}
+}
+class Stack:Iterator{
+	private object []stack;
+	private int top;
+	public Stack(){
+		stack = new object[5];
+		top=-1;
+	}
+	public override object Add(object a){
+		top++;
+		stack[top]=a;
+		return null;
+	}
+	public override bool hasNext(){
+		if(top<0){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	public override object next(){
+		return(stack[top--]);
+	}
+}
+class Queue:Iterator{
+	private int rear;
+	private int front;
+	private object []queue;
+	public Queue(){
+		front=0;
+		rear=0;
+		queue=new object[5];
+	}
+	public override object Add(object a){
+		queue[front]=a;
+		front++;
+		return null;
+	}
+	public override object next(){
+		return(queue[rear++]);
+	}
+	public override bool hasNext(){
+		if(front<=rear){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+}
+class Program{
+	public static void Main(){
+		object first=null;
+		Iterator itr;
+		itr = new LLMethods();
+		first = itr.Add(100);
+		first = itr.Add(200);
+		first = itr.Add(300);
+		LinkedList temp = (LinkedList)first;
+		while(itr.hasNext()){
+			System.Console.WriteLine("{0}  ",itr.next());
+		}
+		System.Console.WriteLine();
+		itr = new Stack();
+		itr.Add(100);
+		itr.Add(200);
+		itr.Add(300);
+		while(itr.hasNext()){
+			System.Console.WriteLine("{0}  ",itr.next());
+		}
+		System.Console.WriteLine();
+		itr=new Queue();
+		itr.Add(100);
+		itr.Add(200);
+		itr.Add(300);
+		while(itr.hasNext()){
+			System.Console.WriteLine("{0}  ",itr.next());
+		}
+	}
+}

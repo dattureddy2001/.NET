@@ -1,0 +1,30 @@
+namespace nm1{
+	delegate void Mydelegate();
+	class Product{
+		private int pid;
+		private string pname;
+		public void read(){
+			System.Console.Write("Enter the ID:");
+			pid=int.Parse(System.Console.ReadLine());
+			System.Console.Write("Enter the Name:");
+			pname=System.Console.ReadLine();
+		}
+		public void print(){
+			System.Console.WriteLine("ID: {0}  Name: {1} ",pid,pname);
+		}
+	}
+	class Program{
+		public static void Main(){
+			Product []p=new Product[5];
+			Mydelegate md=null;
+			for(int i=0;i<5;i++){
+				p[i]=new Product();
+				md+=new Mydelegate(p[i].read);
+			}
+			for(int i=0;i<5;i++){
+				md+=new Mydelegate(p[i].print);
+			}
+			md();
+		}
+	}
+}

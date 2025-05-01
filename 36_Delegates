@@ -1,0 +1,26 @@
+namespace nm1{
+	delegate int Mydelegate(int x, int y);
+	class Math{
+		public int Sum(int x, int y){
+			return(x+y);
+		}
+		public int Subt(int x, int y){
+			return(x-y);
+		}
+	}
+	class Program{
+		public static void Main(){
+			Mydelegate md = null;
+			Math m=new Math();
+			/*md=m.sum; ila kuda ivvachu.*/
+			md = new Mydelegate(m.Sum);
+			System.Console.WriteLine(md(500,200));
+			md = new Mydelegate(m.Subt);
+			System.Console.WriteLine(md(500,200));
+			md+= new Mydelegate(m.Sum);
+			System.Console.WriteLine(md(500,200));
+			md-=new Mydelegate(m.Subt);
+			System.Console.WriteLine(md(500,200));
+		}
+	}
+}

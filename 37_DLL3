@@ -1,0 +1,13 @@
+using Ram;
+using Ram.Shiva;
+
+class Program{
+	public static void Main(){
+		Math2024 m1;
+		Math2025 m2;
+		m1 = new Math2024();
+		m2 = new Math2025();
+		System.Console.WriteLine(m1.Sum(100,200));
+		System.Console.WriteLine(m2.Subt(200,100));
+	}
+}

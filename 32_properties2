@@ -1,0 +1,15 @@
+/*With this program I am trying to auto implement properties. With this we can create as many members as possible without
+a lot of effort. Or else it would be very hectic to create many properties and members*/
+class Product
+{
+	public int pid{set;get;}
+	public string pname{set;get;}
+}
+class Program{
+	public static void Main(){
+		Product p = new Product();
+		p.pid=1001;/*This is accessing the public member without any method. Same will happen when we access other members also.*/
+		p.pname="Dell";
+		System.Console.WriteLine(" {0} {1} ", p.pid, p.pname);
+	}
+}

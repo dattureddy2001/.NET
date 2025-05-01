@@ -1,0 +1,170 @@
+interface IEnumerator<T>
+{
+	bool hasNext();
+	T 	 next();
+}
+
+class Stack<T> : IEnumerator<T>
+{
+	private T []stack;
+	private int top;
+	public Stack(){
+		stack = new T[5];
+		top=-1;
+	}
+	public void push(T a){
+		top++;
+		stack[top]=a;
+	}
+	public bool hasNext(){
+		if(top<0){
+			return false;
+		}
+		return true;
+	}
+	public T next(){
+		return(stack[top--]);
+	}
+}
+class Queue<T> : IEnumerator<T>
+{
+	private T []queue;
+	private int front, rear;
+	public Queue(){
+		front=0;
+		rear=0;
+		queue=new T[5];
+	}
+	public void Enqueue(T a){
+		queue[front]=a;
+		front++;
+	}
+	public bool hasNext(){
+		if(rear>=front){
+			return false;
+		}
+		return true;
+	}
+	public T next(){
+		return(queue[rear++]);
+	}
+}
+
+
+class LinkedList<T> : IEnumerator<T>
+{
+	private T data;
+	private LinkedList<T>	guest,nw,nxt,first,prev;
+
+	public LinkedList()
+	{
+		nxt=first=null;
+	}
+
+	public void Add(T value)
+	{
+		nw=new LinkedList<T>();
+		nw.data=value;
+
+		if(first==null)
+		{
+			first=prev=nw;
+		}
+		else{
+
+			prev.nxt=nw;
+			prev=nw;
+		}
+
+	}
+
+	public IEnumerator<T> GetEnumerator()
+	{
+		guest=first;
+		return this;
+	}
+	public bool hasNext()
+	{
+		if(guest!=null)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public T next()
+	{
+		T temp;
+		temp=guest.data;
+		guest=guest.nxt;
+		return temp;
+	}
+
+}
+
+
+
+class Program{
+	public static void Main(){
+		Stack<int> s = new Stack<int>();
+		Queue<int> q = new Queue<int>();
+		LinkedList<int> ll = new LinkedList<int>();
+		s.push(100);
+		s.push(200);
+		s.push(300);
+		s.push(400);
+		q.Enqueue(100);
+		q.Enqueue(200);
+		q.Enqueue(300);
+		q.Enqueue(400);
+		ll.Add(100);
+		ll.Add(200);
+		ll.Add(300);
+		ll.Add(400);
+		System.Console.Write("Stack data:   ");
+		IEnumerator<int> ie;
+		ie = s;
+		while(ie.hasNext()){
+			System.Console.Write("{0}  ",ie.next());
+		}
+		System.Console.WriteLine();
+		System.Console.WriteLine();
+
+		System.Console.Write("Queue Data:    ");
+		ie=q;
+		while(ie.hasNext()){
+			System.Console.Write("{0}  ",ie.next());
+		}
+		System.Console.WriteLine();
+		System.Console.WriteLine();
+		System.Console.WriteLine();
+
+
+
+		System.Console.Write("LinkedList Data:   ");
+		ie=ll.GetEnumerator();
+		while(ie.hasNext()){
+			System.Console.Write("{0}  ",ie.next());
+		}
+		System.Console.WriteLine();
+		System.Console.WriteLine();
+		System.Console.WriteLine();
+
+
+		System.Console.Write("LinkedList Data:   ");
+		ie=ll.GetEnumerator();
+		while(ie.hasNext()){
+			System.Console.Write("{0}  ",ie.next());
+		}
+
+		System.Console.WriteLine();
+		System.Console.WriteLine();
+
+		System.Console.Write("LinkedList Data:   ");
+
+		ie=ll.GetEnumerator();
+		while(ie.hasNext()){
+			System.Console.Write("{0}  ",ie.next());
+		}
+	}
+}

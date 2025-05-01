@@ -1,0 +1,103 @@
+/*Manaki indulo properties vaadi, product data ni enter and retrieve cheyyali.*/
+class Product{
+	private int _pid;
+	private string _pname;
+	private double _prize;
+	public Product(int id, string name, double rate){
+		_pid=id;
+		_pname=name;
+		_prize=rate;
+	}
+	public int pid{
+		get{
+			return _pid;
+		}
+	}
+	public string pname{
+		get{
+			return _pname;
+		}
+	}
+	public double prize{
+		get{
+			return _prize;
+		}
+	}
+	public override string ToString(){
+		return("ID: "+_pid+"  Name:  "+_pname+"  Prize:  "+_prize);
+	}
+}
+
+class Collection{
+	private Product []x;
+	public int count{set;get;}
+	public Collection(){
+		x=new Product[10];
+	}
+	public void Add(Product entry){
+		x[count++]=entry;
+	}
+	public Product this[int ndx]{
+		get{
+			for(int i=0;i<count;i++){
+				if(x[i].pid==ndx){
+					return(x[i]);
+				}
+			}
+			return null;
+		}
+	}
+	public Product this[string ndx]{
+		get{
+			for(int i=0;i<count;i++){
+				if(x[i].pname==ndx){
+					return(x[i]);
+				}
+			}
+			return null;
+		}
+	}
+
+}
+
+
+
+class List{
+	private Collection c;
+	public List()
+	{
+		c=new Collection();
+	}
+	public Collection Items
+	{
+		get{
+			return(c);
+		}
+	}
+}
+
+
+
+class Program{
+	public static void Main(){
+		Product p1 = new Product(1,"Dell",4500);
+		Product p2 = new Product(2,"Lenovo",5500);
+		List l = new List();
+		l.Items.Add(p1);
+		l.Items.Add(p2);
+		Product temp=l.Items[2];
+		if(temp!=null){
+			System.Console.WriteLine(temp);
+		}
+		else{
+			System.Console.WriteLine("The value is not found.");
+		}
+		temp=l.Items["HP"];
+		if(temp!=null){
+			System.Console.WriteLine(temp);
+		}
+		else{
+			System.Console.WriteLine("The value is not found.");
+		}
+	}
+}

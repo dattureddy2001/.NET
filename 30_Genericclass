@@ -1,0 +1,33 @@
+class Generic<T>
+{
+	private T data;
+	public Generic(T value){
+		data=value;
+	}
+	public void setData(T value){
+		data=value;
+	}
+	public T getData(){
+		return(data);
+	}
+}
+
+
+class Program{
+	public static void Main(){
+		Generic<int> Gi;
+		Generic<double> Gd;
+		Generic<string> Gs;
+		Generic<object> Go;
+		Gi = new Generic<int>(100);
+		Gd = new Generic<double>(20.22);
+		Gs = new Generic<string>("ravi");
+		Go = new Generic<object>(100);
+
+		Gi.setData(1500);
+		System.Console.WriteLine(Gi.getData());
+		System.Console.WriteLine(Gd.getData());
+		System.Console.WriteLine(Gs.getData());
+		System.Console.WriteLine(Go.getData());
+	}
+}

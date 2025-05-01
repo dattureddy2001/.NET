@@ -1,0 +1,15 @@
+namespace Ram
+{
+	public class Math2024{
+		public int Sum(int x, int y){
+			return(x+y);
+		}
+	}
+	namespace Shiva{
+		public class Math2025{
+			public int Subt(int x, int y){
+				return(x-y);
+			}
+		}
+	}
+}

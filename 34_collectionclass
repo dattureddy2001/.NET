@@ -1,0 +1,46 @@
+/*Ikkada manaki properties concepts anni koncham combine chesi oka question icharu.EE program sir ye raasi, EE question sir ki explain cheyyamannaru.*/
+
+class Collection{
+	private int []x;
+	public int count{set;get;}
+	public Collection(){
+		x=new int[10];
+	}
+	public void Add(int value){
+		x[count++]=value;
+	}
+	public int this[int ndx]{
+		get{
+			return x[ndx];
+		}
+	}
+}
+
+class List{
+	private Collection c;
+	public List()
+	{
+		c=new Collection();
+	}
+	public Collection Items
+	{
+		get{
+			return(c);
+		}
+	}
+}
+
+
+class Program{
+	public static void Main()
+	{
+		List l=new List();
+		l.Items.Add(100);
+		l.Items.Add(200);
+		l.Items.Add(300);
+		l.Items.Add(400);
+		for(int i=0;i<l.Items.count;i++){
+			System.Console.WriteLine(l.Items[i]);
+		}
+	}
+}

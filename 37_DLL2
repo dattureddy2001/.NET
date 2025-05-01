@@ -1,0 +1,10 @@
+class Program{
+	public static void Main(){
+		Ram.Math2024 m1;
+		Ram.Shiva.Math2025 m2;
+		m1 = new Ram.Math2024();
+		m2 = new Ram.Shiva.Math2025();
+		System.Console.WriteLine(m1.Sum(100,200));
+		System.Console.WriteLine(m2.Subt(200,100));
+	}
+}

@@ -1,0 +1,27 @@
+/*Arrays ni access cheyyadaniki idi use chesthamu.*/
+class List{
+	public int []x;
+	public List(){
+		x = new int[5];
+	}
+	public int this[int ndx]
+	{
+		set{
+			x[ndx] = value;
+		}
+		get{
+			return(x[ndx]);
+		}
+	}
+}
+class Program{
+	public static void Main(){
+		List l = new List();
+		l[0]=100;
+		l[1]=200;
+		l[2]=300;
+		for(int i=0;i<3;i++){
+			System.Console.WriteLine(l[i]);
+		}
+	}
+}

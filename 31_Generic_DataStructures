@@ -1,0 +1,108 @@
+class LinkedList<T>
+{
+	private T data;
+	private LinkedList<T> nxt,nw,first,prev;
+
+
+	public LinkedList(){
+		first=nxt=null;
+	}
+
+	public void Add(T value){
+		nw = new LinkedList<T>();
+		nw.data = value;
+
+		if(first==null){
+			first=nw;
+			prev=nw;
+		}
+		else{
+			prev.nxt=nw;
+			prev=nw;
+		}
+	}
+
+	public void display(){
+		LinkedList<T> temp = first;
+		while(temp!=null){
+			System.Console.WriteLine("{0} ",temp.data);
+			temp=temp.nxt;
+		}
+	}
+}
+
+class Stack<T>
+{
+	private T []stack;
+	private int top;
+	public Stack(){
+		stack = new T[5];
+		top=-1;
+	}
+	public void push(T a){
+		top++;
+		stack[top]=a;
+	}
+	public T pop(){
+		return(stack[top--]);
+	}
+	public bool isEmpty(){
+		if(top<0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+}
+
+class Queue<T>
+{
+	private int rear;
+	private int front;
+	private T []queue;
+	public Queue(){
+		front=0;
+		rear=0;
+		queue=new T[5];
+	}
+	public void Enqueue(T a){
+		queue[front]=a;
+		front++;
+	}
+	public T Dequeue(){
+		return(queue[rear++]);
+	}
+	public bool isEmpty(){
+		if(front<=rear){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+}
+
+class Program{
+	public static void Main(){
+		Stack<int> s = new Stack<int>();
+		s.push(100);
+		s.push(200);
+		s.push(300);
+		while((!s.isEmpty())){
+			System.Console.WriteLine(s.pop());
+		}
+		Queue<int> q=new Queue<int>();
+		q.Enqueue(100);
+		q.Enqueue(200);
+		q.Enqueue(300);
+		while(!q.isEmpty()){
+			System.Console.WriteLine(q.Dequeue());
+		}
+		LinkedList<int> ll = new LinkedList<int>();
+		ll.Add(100);
+		ll.Add(200);
+		ll.Add(300);
+		ll.display();
+	}
+}
